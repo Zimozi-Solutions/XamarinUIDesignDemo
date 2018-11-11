@@ -16,7 +16,8 @@ namespace Copenhagenapp.Droid
     [Activity(Label = "@string/ApplicationName",
               Icon = "@mipmap/ic_launcher",
               Theme = "@style/SplashTheme",
-              MainLauncher = true)]
+              MainLauncher = true,
+             ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class SplashActivity : AppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

@@ -15,7 +15,7 @@ namespace Copenhagenapp.Droid
     [Activity(Label = "@string/ApplicationName",
               Icon = "@mipmap/ic_launcher",
               Theme = "@style/MyTheme",
-              ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+              ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
