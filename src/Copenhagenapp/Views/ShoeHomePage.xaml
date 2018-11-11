@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding Title}"
+             x:Class="Copenhagenapp.Views.ShoeHomePage"
+             xmlns:VM="clr-namespace:Copenhagenapp.ViewModels"
+             xmlns:Controls="clr-namespace:Copenhagenapp.Controls"
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             BackgroundColor="Transparent">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="sellerTemplate">
+                <Controls:ExtendedViewCell SelectedBackgroundColor="Transparent">
+                    <ViewCell.View>
+                       <Grid Margin="10,5" HorizontalOptions="Start">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="7*"/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="8.5*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                         <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Source="RoundedRectangleChatBrown"  Scale="2"/>  
+                         <Label Grid.Row="0" Grid.Column="1"  HorizontalOptions="Center" VerticalTextAlignment="Center"
+                                Text="{Binding Message}" FontSize="Small" TextColor="#FFFFFF"/>
+                         <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Text="{Binding CreatedDate}" FontSize="Micro" TextColor="#6C6C6C"/>
+                       </Grid>
+                    </ViewCell.View>
+                </Controls:ExtendedViewCell>
+            </DataTemplate>
+            
+            <DataTemplate x:Key="buyerTemplate">
+                <Controls:ExtendedViewCell SelectedBackgroundColor="Transparent">
+                    <ViewCell.View>
+                        <Grid Margin="10,5" HorizontalOptions="End">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="7*"/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                         <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Source="RoundedRectangleChatWhite" Scale="2"/>  
+                         <Label Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalTextAlignment="Center"
+                                Text="{Binding Message}" FontSize="Small" TextColor="#6C6C6C"/>
+                         <Label Grid.Row="1" Grid.Column="0" HorizontalOptions="End" Text="{Binding CreatedDate}" FontSize="Micro" TextColor="#6C6C6C"/>
+                       </Grid>
+                    </ViewCell.View>
+                </Controls:ExtendedViewCell>
+            </DataTemplate>
+            
+            
+            <!--Template TemplateSelector -->
+            <VM:SellerBuyerTemplateSelector x:Key="SellerBuyerTemplateSelector"
+                                            DefaultTemplate="{StaticResource sellerTemplate}"
+                                            
+                                            SellerTemplate="{StaticResource sellerTemplate}"
+                                            BuyerTemplate="{StaticResource buyerTemplate}"/>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+ 
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/> <!--    CarouselView        -->
+            <RowDefinition Height="2*"/>  <!--    Title & Description        -->
+            <RowDefinition Height="2.5*"/> <!--    Icon of the user and his personal data        -->
+            <RowDefinition Height="2*"/> <!--    Message dialog between the seller and buyer        -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+         <!--CarouselViewControl-->
+        <!--Ref:https://github.com/alexrainman/CarouselView-->
+        <controls:CarouselViewControl Orientation="Horizontal"
+                                      IndicatorsShape="Circle"
+                                      ShowIndicators="true"
+                                      IndicatorsTintColor="#C0C0C0"
+                                      CurrentPageIndicatorTintColor = "#808080"
+                                      InterPageSpacing="10" 
+                                      Position="0" 
+                                      ItemsSource="{Binding Shoes}"
+                                      VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+           
+            <controls:CarouselViewControl.ItemTemplate>
+                <DataTemplate>
+                     <Image Aspect="AspectFill" Source="{Binding .}"
+                             HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                </DataTemplate>
+            </controls:CarouselViewControl.ItemTemplate>
+        
+        </controls:CarouselViewControl>
+        
+         <!--    Title & Description        -->
+        <Grid Grid.Row="1" BackgroundColor="#FFFFFF">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            
+            <StackLayout Grid.Row="0" BackgroundColor="Transparent">
+                <Label Margin="10,10,10,0"  Text="Nice Adidass Sneakers" Style="{StaticResource BlackHeading}"/> 
+                <Label Margin="10,0"  Text="This shoe is cool and is almost not used. I want to swop it because Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500s,"
+                   Style="{StaticResource GreyText}"/> 
+            </StackLayout>
+            
+            <Image Grid.Row="1" Source="line" Aspect="AspectFill"
+                 HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+            <Label Grid.Row="2" Margin="10,0"  Text="Size: 43" VerticalTextAlignment="Center" Style="{StaticResource BlackHeading}"/> 
+       
+        </Grid>
+        
+       <!--    Icon of the user and his personal data        -->
+             
+      <StackLayout Grid.Row="2" BackgroundColor="#FAFAFA">
+        <Label Margin="10"  Text="About the Seller:" Style="{StaticResource BlackHeading}"/> 
+        
+        <Grid Margin="10" RowSpacing="10" ColumnSpacing="10" >
+                
+           <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>    
+                <RowDefinition Height="*"/>    
+           </Grid.RowDefinitions> 
+                
+           <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>    
+                <ColumnDefinition Width="3.5*"/>    
+                <ColumnDefinition Width="*"/>    
+                <ColumnDefinition Width="3.5*"/>    
+           </Grid.ColumnDefinitions> 
+                
+                <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Source="user"
+                       HorizontalOptions="Start" VerticalOptions="Center" Scale="1.2"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="Jacob H." Style="{StaticResource BlackHeading}"
+                       TextColor="#6A6A6A"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="41 Years Old"
+                       Style="{StaticResource GreyText}"/>
+                <Image Grid.Row="1" Grid.Column="2" Source="Dot"  
+                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Grid.Row="1" Grid.Column="3" Text="2300 Copenhagen"
+                       Style="{StaticResource GreyText}"/>
+                
+        </Grid>
+          
+        <Grid Margin="15,0,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>    
+                <ColumnDefinition Width="*"/>    
+            </Grid.ColumnDefinitions>
+                         <!--Image="RoundedRectangleBlue" , Image="RoundedRectangleRed"
+                <Button Grid.Column="0" Style="{StaticResource ButtonStyle}" BackgroundColor="#5D94BD"
+                      Text="More from Seller" TextColor="#FFFFFF"  WidthRequest="200" HeightRequest="55" HorizontalOptions="Center"/>
+                <Button Grid.Column="1" Style="{StaticResource ButtonStyle}" BackgroundColor="#D56C6C"
+                     Text="Report" TextColor="#FFFFFF"  WidthRequest="200" HeightRequest="55" 
+                        HorizontalOptions="Center"/>--> 
+                
+                <Button Grid.Column="0" Style="{StaticResource ButtonStyle}" 
+                       Image="Blue"
+                        />
+                <Button Grid.Column="1" Style="{StaticResource ButtonStyle}" 
+                       Image="Red"
+                        />
+           
+        </Grid>   
+           
+      </StackLayout>
+        
+        <!--    Message dialog between the seller and buyer        -->
+        <ListView Grid.Row="3" BackgroundColor="#F5F5F5" RowHeight="80"
+                   HorizontalOptions="Center"
+                  ItemsSource="{Binding ChatList}"
+                    CachingStrategy="RecycleElement"
+                   ItemTemplate="{StaticResource SellerBuyerTemplateSelector}"
+                 /> 
+           
+<!--    Entry field where it is possible to add new message    -->
+        <Grid Grid.Row="4" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".8*"/>
+                <ColumnDefinition Width="6.7*"/>
+                <ColumnDefinition Width="2.5*"/>
+            </Grid.ColumnDefinitions>
+            
+                <Image Grid.Column="0" Margin="5,0,0,0" BackgroundColor="Transparent" Source="Emoji" HorizontalOptions="Center" Scale="1"/>
+                <Entry Grid.Column="1" BackgroundColor="Transparent" Placeholder="Write message..." Style="{StaticResource EntryText}"
+                       HorizontalOptions="FillAndExpand"/>
+            
+                <!--Image="Send"-->
+                <Button Margin="5,0" Grid.Column="2" Image="Send1" HorizontalOptions="End"
+                        Style="{StaticResource ButtonStyle}">
+                  
+                </Button> 
+        </Grid>
+       
+    </Grid>
+ 
+</ContentPage>

@@ -50,7 +50,7 @@ namespace Copenhagenapp
             LogUnobservedTaskExceptions();
             AppResources.Culture = CrossMultilingual.Current.DeviceCultureInfo;
 
-            await NavigationService.NavigateAsync("SplashScreenPage");
+            await NavigationService.NavigateAsync("ShoeHomePage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -65,7 +65,9 @@ namespace Copenhagenapp
             containerRegistry.RegisterForNavigation<TabbedPage>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
+            containerRegistry.RegisterForNavigation<ShoeHomePage>();
             containerRegistry.RegisterForNavigation<SplashScreenPage>();
+            containerRegistry.RegisterForNavigation<TopShoesCarouselPage>();
         }
 
         protected override void OnStart()

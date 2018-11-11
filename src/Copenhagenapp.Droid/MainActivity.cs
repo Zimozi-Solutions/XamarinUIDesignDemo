@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Copenhagenapp.Helpers;
 using Xamarin.Forms.Platform.Android;
+using CarouselView.FormsPlugin.Android;
 
 namespace Copenhagenapp.Droid
 {
@@ -29,6 +30,7 @@ namespace Copenhagenapp.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             global::FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
             global::FFImageLoading.ImageService.Instance.Initialize();
+            CarouselViewRenderer.Init();
 
             LoadApplication(new App(new AndroidInitializer()));
         }

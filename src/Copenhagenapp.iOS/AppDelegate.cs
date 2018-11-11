@@ -4,6 +4,7 @@ using System.Linq;
 using Xamarin.Forms.Platform.iOS;
 using Foundation;
 using UIKit;
+using CarouselView.FormsPlugin.iOS;
 
 namespace Copenhagenapp.iOS
 {
@@ -22,6 +23,7 @@ namespace Copenhagenapp.iOS
             Xamarin.Calabash.Start();
 #endif
             LoadApplication(new App(new iOSInitializer()));
+            CarouselViewRenderer.Init();
 
             return base.FinishedLaunching(uiApplication, launchOptions);
         }
