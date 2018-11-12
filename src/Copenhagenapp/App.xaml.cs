@@ -50,7 +50,9 @@ namespace Copenhagenapp
             LogUnobservedTaskExceptions();
             AppResources.Culture = CrossMultilingual.Current.DeviceCultureInfo;
 
-            await NavigationService.NavigateAsync("ShoeHomeListPage");
+            //await NavigationService.NavigateAsync("ShoeHomeListPage");
+            await NavigationService.NavigateAsync("ShoeHomePage");
+
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

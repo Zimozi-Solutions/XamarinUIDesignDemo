@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding Title}"
+             x:Class="Copenhagenapp.Views.ShoeHomeFXPage">
+    
+    <ContentPage.Resources>
+        <StyleSheet Source="Styles/ShoeHomeFXPage.css" />
+        
+        <Style x:Key="gridCell" TargetType="Label">
+            <Setter Property="HeightRequest" Value="80"/>
+            <Setter Property="FlexLayout.Grow" Value="0"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="Small"/>
+            <Setter Property="TextColor" Value="#556"/>
+            <Setter Property="BackgroundColor" Value="#eed"/>
+        </Style> 
+        <Style x:Key="full" TargetType="Label"
+               BasedOn="{StaticResource gridCell}">
+            <Setter Property="FlexLayout.Basis" Value="100%"/>
+        </Style>
+        <Style x:Key="half" TargetType="Label"
+               BasedOn="{StaticResource gridCell}">
+            <Setter Property="FlexLayout.Basis" Value="50%"/>
+            <Setter Property="BackgroundColor" Value="CornflowerBlue"/>
+        </Style>
+        <Style x:Key="third" TargetType="Label"
+               BasedOn="{StaticResource gridCell}">
+            <Setter Property="FlexLayout.Basis" Value="33.33%"/>
+            <Setter Property="BackgroundColor" Value="Pink"/>
+        </Style>
+        <Style x:Key="fourth" TargetType="Label"
+               BasedOn="{StaticResource gridCell}">
+            <Setter Property="FlexLayout.Basis" Value="25%"/>
+            <Setter Property="BackgroundColor" Value="LightBlue"/>
+        </Style>
+        <Style x:Key="auto" TargetType="Label"
+               BasedOn="{StaticResource gridCell}">
+            <Setter Property="FlexLayout.Grow" Value="1"/>
+            <Setter Property="BackgroundColor" Value="Coral"/>
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <FlexLayout>
+                <FlexLayout StyleClass="content">
+                    <Image StyleClass="poster" Source="Shoes"/>
+                    <Label StyleClass="header" Text="Nice Adidass Sneakers" />
+                    <Label StyleClass="description" Text="This shoe is cool and is almost not used. I want to swop it because Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500s,"/>
+                    <Image StyleClass="poster" Source="line"/>
+                    <Label StyleClass="header" Text="Size: 43" />
+                </FlexLayout>
+                
+                <StackLayout>
+                    <Label StyleClass="header" Text="About the Seller"/>
+                     <FlexLayout Style="{StaticResource fourth}">
+                        <Image Source="user"
+                             HorizontalOptions="Start" VerticalOptions="Center" Scale="1.2"/>
+                        
+                        <Label Text="Jacob H." Style="{StaticResource BlackHeading}"
+                               TextColor="#6A6A6A"/>
+                        <Label Text="41 Years Old"
+                               Style="{StaticResource GreyText}"/>
+                        <Image Source="Dot"  
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Text="2300 Copenhagen"
+                               Style="{StaticResource GreyText}"/>
+                    </FlexLayout>
+                </StackLayout>
+                
+                <FlexLayout StyleClass="content">
+                    
+                    
+                </FlexLayout>
+            </FlexLayout>    
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

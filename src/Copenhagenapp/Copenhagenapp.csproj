@@ -23,9 +23,13 @@
 
   <ItemGroup>
     <EmbeddedResource Remove="Views\TopShoesCarouselPage1.xaml" />
+    <EmbeddedResource Remove="Views\ShoeHomeFXPage.xaml" />
+    <EmbeddedResource Remove="Styles\ShoeHomeFxPage.css" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\TopShoesCarouselPage1.xaml.cs" />
+    <Compile Remove="Views\ShoeHomeFXPage.xaml.cs" />
+    <Compile Remove="ViewModels\ShoeHomeFXPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\*.resx" Generator="ResXFileCodeGenerator" LastGenOutput="%(Filename).Designer.cs" />

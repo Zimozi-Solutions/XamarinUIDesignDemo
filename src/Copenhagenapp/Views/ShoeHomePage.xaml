@@ -68,7 +68,7 @@
                 
     </ContentPage.Resources>
  
-    <Grid RowSpacing="0">
+    <Grid RowSpacing="0" x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/> <!--    CarouselView        -->
             <RowDefinition Height="2*"/>  <!--    Title & Description        -->
@@ -99,7 +99,7 @@
         </controls:CarouselViewControl>
         
          <!--    Title & Description        -->
-        <Grid Grid.Row="1" BackgroundColor="#FFFFFF">
+        <Grid Grid.Row="1" BackgroundColor="#FFFFFF" x:Name="SubGridTitle">
             <Grid.RowDefinitions>
                 <RowDefinition Height="7*"/>
                 <RowDefinition Height="*"/>
@@ -123,7 +123,7 @@
       <StackLayout Grid.Row="2" BackgroundColor="#FAFAFA">
         <Label Margin="10"  Text="About the Seller:" Style="{StaticResource BlackHeading}"/> 
         
-        <Grid Margin="10" RowSpacing="10" ColumnSpacing="10" >
+        <Grid Margin="10" RowSpacing="10" ColumnSpacing="10" x:Name="SubGridUserData">
                 
            <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>    
@@ -163,10 +163,10 @@
                         HorizontalOptions="Center"/>--> 
                 
                 <Button Grid.Column="0" Style="{StaticResource ButtonStyle}" 
-                       Image="Blue"
+                       Image="Blue"  x:Name="BlueBtn"
                         />
                 <Button Grid.Column="1" Style="{StaticResource ButtonStyle}" 
-                       Image="Red"
+                       Image="Red"   x:Name="RedBtn"
                         />
            
         </Grid>   
@@ -195,7 +195,7 @@
             
                 <!--Image="Send"-->
                 <Button Margin="5,0" Grid.Column="2" Image="Send1" HorizontalOptions="End"
-                        Style="{StaticResource ButtonStyle}">
+                        Style="{StaticResource ButtonStyle}" x:Name="SendBtn">
                   
                 </Button> 
         </Grid>
