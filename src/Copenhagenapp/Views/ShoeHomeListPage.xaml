@@ -2,12 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="{Binding Title}"
-             x:Class="Copenhagenapp.Views.ShoeHomePage"
-             xmlns:VM="clr-namespace:Copenhagenapp.ViewModels"
+             x:Class="Copenhagenapp.Views.ShoeHomeListPage"
+             
+              xmlns:VM="clr-namespace:Copenhagenapp.ViewModels"
              xmlns:Controls="clr-namespace:Copenhagenapp.Controls"
              xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
-             BackgroundColor="Transparent">
- <ContentPage.Resources>
+            
+             >
+     <ContentPage.Resources>
           
                   <ResourceDictionary>
             <DataTemplate x:Key="sellerTemplate">
@@ -67,14 +69,27 @@
         </ResourceDictionary>
                 
     </ContentPage.Resources>
- 
-    <Grid RowSpacing="0">
+    
+    <Grid>
+         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/> <!--   Listview       -->
+            <RowDefinition Height="Auto"/>  <!--   Message        -->
+        </Grid.RowDefinitions>
+  
+    
+                  <ListView  BackgroundColor="#F5F5F5" RowHeight="80"
+                   HorizontalOptions="Center"
+                  ItemsSource="{Binding ChatList}"
+                    CachingStrategy="RecycleElement"
+                   ItemTemplate="{StaticResource SellerBuyerTemplateSelector}"
+                   
+                 >
+        <ListView.Header>
+      <Grid RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/> <!--    CarouselView        -->
             <RowDefinition Height="2*"/>  <!--    Title & Description        -->
             <RowDefinition Height="2.5*"/> <!--    Icon of the user and his personal data        -->
-            <RowDefinition Height="2*"/> <!--    Message dialog between the seller and buyer        -->
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
          <!--CarouselViewControl-->
@@ -173,16 +188,17 @@
            
       </StackLayout>
         
-        <!--    Message dialog between the seller and buyer        -->
-        <ListView Grid.Row="3" BackgroundColor="#F5F5F5" RowHeight="80"
-                   HorizontalOptions="Center"
-                  ItemsSource="{Binding ChatList}"
-                    CachingStrategy="RecycleElement"
-                   ItemTemplate="{StaticResource SellerBuyerTemplateSelector}"
-                 /> 
+   
            
-<!--    Entry field where it is possible to add new message    -->
-        <Grid Grid.Row="4" >
+
+       
+    </Grid>
+</ListView.Header>
+ 
+        
+    </ListView> 
+    <!--    Entry field where it is possible to add new message    -->
+        <Grid  Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".8*"/>
                 <ColumnDefinition Width="6.7*"/>
@@ -199,7 +215,5 @@
                   
                 </Button> 
         </Grid>
-       
-    </Grid>
- 
+          </Grid>
 </ContentPage>

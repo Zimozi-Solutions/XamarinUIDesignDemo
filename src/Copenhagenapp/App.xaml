@@ -3,6 +3,7 @@
     <prism:PrismApplication.Resources>
         <!-- Application resource dictionary -->
         <ResourceDictionary>
+            
             <ResourceDictionary.MergedDictionaries>
                 <styling:ColorPalette />
                 <styling:ElementStyling />
